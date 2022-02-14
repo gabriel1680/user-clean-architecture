@@ -1,4 +1,4 @@
-import InvalidEmailError from "../errors/InvalidEmailError";
+import { InvalidEmailError } from "@domain/entities/user/errors";
 
 
 export default class Email 

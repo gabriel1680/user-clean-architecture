@@ -1,5 +1,5 @@
 import { Password, Name, Role } from "./valueobjects";
-import Email from "../shared/valueobjects/Email";
+import Email from "./valueobjects/Email";
 
 
 export default class User {

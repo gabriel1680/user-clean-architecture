@@ -1,7 +1,8 @@
-import DomainError from "@domain/errors/DomainError";
-import Email from "@domain/entities/shared/valueobjects/Email";
+import { DomainError } from "@domain/errors";
+import Email from "@domain/entities/user/valueobjects/Email";
 import User from "@domain/entities/user/User";
 import { Name, Password, Role } from "@domain/entities/user/valueobjects";
+
 
 type CreateUserFactory = {
     id: string;
@@ -16,7 +17,7 @@ type CreateUserFactory = {
     updatedAt?: Date;
 }
 
-export default class UserFactory
+export class UserFactory
 {
     public static create(
         {
