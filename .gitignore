@@ -1,0 +1,15 @@
+.idea/
+.vscode/
+node_modules/
+build/
+tmp/
+!git.env
+!.test.env
+*.env
+package-lock.json
+!errorMessages.json
+*.todo
+*.icloud
+.DS_Store
+*.sqlite
+coverage

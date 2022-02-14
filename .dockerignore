@@ -1,0 +1,12 @@
+node_modules/
+tests/
+.env
+.idea
+.husky
+*.py
+*.md
+.todo
+.git*
+jest.config.js
+commitlint.config.js
+.vscode
