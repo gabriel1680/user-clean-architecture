@@ -11,31 +11,30 @@ import UserToView from "../shared/helpers/UserToView";
 import CreatedUserResponse from "@application/usecases/user/Create/interfaces/CreatedUserResponse";
 
 
-export default class CreateUser implements UserCreator 
-{
+export default class CreateUser implements UserCreator {
     constructor(
-        private hashService: HashPasswordService, 
+        private hashService: HashPasswordService,
         private userRepository: CreateRepository<User>,
         private idGeneratorService: UniqueIdGeneratorService
-        ) {}
+    ) { }
 
     public async execute({
-        firstName, 
-        lastName, 
-        email, 
-        role, 
-        password 
-    }: UserData): Promise<ApplicationError|DomainError|CreatedUserResponse> {
+        firstName,
+        lastName,
+        email,
+        role,
+        password
+    }: UserData): Promise<ApplicationError | DomainError | CreatedUserResponse> {
 
-        const userOrError: User|DomainError = UserFactory.create({
-                id: this.idGeneratorService.generate(),
-                firstName,
-                lastName,
-                email,
-                password,
-                role,
-                confirmLink: `/users/confirm-account/${this.idGeneratorService.generate()}`,
-            });
+        const userOrError: User | DomainError = UserFactory.create({
+            id: this.idGeneratorService.generate(),
+            firstName,
+            lastName,
+            email,
+            password,
+            role,
+            confirmLink: `/users/confirm-account/${this.idGeneratorService.generate()}`,
+        });
         if (userOrError instanceof Error) return userOrError;
 
         if (await this.userRepository.exists(email)) return new UserExistsError();
