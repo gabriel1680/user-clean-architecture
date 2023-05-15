@@ -12,45 +12,41 @@ const config = {
         env: process.env.ENVIRONMENT,
     },
     db: {
-        type: process.env.DB_TYPE || "postgres",
-        host: process.env.DB_HOST || "localhost",
-        port: process.env.DB_PORT || 5432,
-        username: process.env.DB_USERNAME || "appraisalAdmin",
-        password: process.env.DB_PASSWORD || "123",
-        database: process.env.DB_NAME || "appraisalCA",
+        type: process.env.DB_TYPE,
+        host: process.env.DB_HOST,
+        port: process.env.DB_PORT,
+        username: process.env.DB_USERNAME,
+        password: process.env.DB_PASSWORD,
+        database: process.env.DB_NAME,
         dropSchema: process.env.DB_DROP === "true",
         synchronize: process.env.DB_SYNCHRONIZE === "true",
         logging: process.env.DB_LOGGING === "true",
     },
     jwt: {
-        secretKey: process.env.JWT_KEY || "Z2FicmllbG5sd3ZhbG9yaXph",
-        expiresIn: process.env.JWT_EXPIRES_IN || "1d",
+        secretKey: process.env.JWT_KEY,
+        expiresIn: process.env.JWT_EXPIRES_IN,
     },
     mail: {
         nodemailer: {
-            host: process.env.NODEMAILER_HOST || "smtp.ethereal.email",
-            port: process.env.NODEMAILER_PORT || 587,
+            host: process.env.NODEMAILER_HOST,
+            port: process.env.NODEMAILER_PORT,
             secure: process.env.NODEMAILER_SECURE === "true",
             auth: {
-                user:
-                    process.env.NODEMAILER_USER || "scot.muller@ethereal.email",
-                pass: process.env.NODEMAILER_PASSWORD || "NUqzF7Mf464kn39wkA",
+                user: process.env.NODEMAILER_USER,
+                pass: process.env.NODEMAILER_PASSWORD,
             },
         },
         defaultSender: {
             name: {
-                firstName:
-                    process.env.DEFAULT_MAIL_SENDER_FIRST_NAME || "gabriel",
-                lastName: process.env.DEFAULT_MAIL_SENDER_LAST_NAME || "lopes",
+                firstName: process.env.DEFAULT_MAIL_SENDER_FIRST_NAME,
+                lastName: process.env.DEFAULT_MAIL_SENDER_LAST_NAME,
             },
-            address:
-                process.env.DEFAULT_MAIL_SENDER_ADDRESS ||
-                "gabriel.lopes16@hotmail.com",
+            address: process.env.DEFAULT_MAIL_SENDER_ADDRESS,
         },
     },
     imageStorage: {
-        apiKey: process.env.IMG_API_KEY || "92193d1d9712c928a1497d9379646230",
-        url: process.env.IMG_UPLOAD_URL || "https://api.imgbb.com/1/upload",
+        apiKey: process.env.IMG_API_KEY,
+        url: process.env.IMG_UPLOAD_URL,
     },
 };
 
