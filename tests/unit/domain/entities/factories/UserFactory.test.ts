@@ -1,5 +1,5 @@
-import User from "../../../../../src/domain/entities/user/User";
-import { UserFactory } from "../../../../../src/domain/factories";
+import User from "@domain/entities/user/User";
+import { UserFactory } from "@domain/factories";
 
 describe("Unit Tests of UserFactory", () => {
     it("Should be able to create a user instance", () => {

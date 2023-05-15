@@ -1,5 +1,4 @@
-import { InvalidNameError } from "../../../../../../src/domain/entities/user/errors";
-
+import { InvalidNameError } from "@domain/entities/user/errors";
 
 describe("Unit Tests of InvaldNameError", () => {
     it("Should be able to create a new instance of Error", () => {
@@ -8,7 +7,9 @@ describe("Unit Tests of InvaldNameError", () => {
     });
 
     it("Should be able to throw", () => {
-        const throwError = () => { throw new InvalidNameError() };
+        const throwError = () => {
+            throw new InvalidNameError();
+        };
         return expect(throwError).toThrowError();
     });
 

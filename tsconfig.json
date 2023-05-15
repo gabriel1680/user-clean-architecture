@@ -6,13 +6,13 @@
          "ES2018"
       ],
       "rootDir": ".",
-      "baseUrl": "/",
+      "baseUrl": "src",
       "paths": {
-         "@domain/*": ["src/domain/*"],
-         "@infra/*": ["src/infra/*"],
-         "@main/*": ["src/main/*"],
-         "@adapters/*": ["src/adapters/*"],
-         "@application/*": ["src/application/*"]
+         "@domain/*": ["domain/*"],
+         "@infra/*": ["infra/*"],
+         "@main/*": ["main/*"],
+         "@adapters/*": ["adapters/*"],
+         "@application/*": ["application/*"]
       },
       "removeComments": true,
       "resolveJsonModule": true,

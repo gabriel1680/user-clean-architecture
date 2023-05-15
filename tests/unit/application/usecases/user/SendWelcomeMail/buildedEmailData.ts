@@ -1,4 +1,4 @@
-import { app } from "../../../../../../src/main/config/configs";
+import { app } from "@main/config/configs";
 
 export default `<!DOCTYPE html
     PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
@@ -1099,4 +1099,4 @@ END OF IMPORTANT
     </div>
 </body>
 
-</html>`
+</html>`;

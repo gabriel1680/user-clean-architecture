@@ -1,6 +1,6 @@
-import SendWelcomeMail from "../../../../../../src/application/usecases/user/SendWelcomeMail/SendWelcomeMail";
-import MailService from "../../../../../../src/application/services/MailService";
-import Email from "../../../../../../src/domain/entities/user/valueobjects/Email";
+import SendWelcomeMail from "@application/usecases/user/SendWelcomeMail/SendWelcomeMail";
+import MailService from "@application/services/MailService";
+import Email from "@domain/entities/user/valueobjects/Email";
 // @ts-ignore
 import htmlMessage from "./buildedEmailData";
 

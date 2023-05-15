@@ -1,5 +1,4 @@
-import { InvalidPasswordError } from "../../../../../../src/domain/entities/user/errors";
-
+import { InvalidPasswordError } from "@domain/entities/user/errors";
 
 describe("Unit Tests of InvaldPasswordError", () => {
     it("Should be able to create a new instance of Error", () => {
@@ -8,12 +7,16 @@ describe("Unit Tests of InvaldPasswordError", () => {
     });
 
     it("Should be able to throw", () => {
-        const throwError = () => { throw new InvalidPasswordError() };
+        const throwError = () => {
+            throw new InvalidPasswordError();
+        };
         return expect(throwError).toThrowError();
     });
 
     it("Should be able to return a message", () => {
         const error = new InvalidPasswordError();
-        return expect(error.message).toBe("A senha deve conter no mínimo 5 caracteres");
+        return expect(error.message).toBe(
+            "A senha deve conter no mínimo 5 caracteres"
+        );
     });
 });

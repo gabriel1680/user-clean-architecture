@@ -1,5 +1,5 @@
-import { InvalidEmailError } from "../../../../../../src/domain/entities/user/errors";
-import Email from "../../../../../../src/domain/entities/user/valueobjects/Email";
+import { InvalidEmailError } from "@domain/entities/user/errors";
+import Email from "@domain/entities/user/valueobjects/Email";
 
 describe("Unit Tests of Email Value Object", () => {
     const validEmail = "gabriel.lopes@gmail.com";

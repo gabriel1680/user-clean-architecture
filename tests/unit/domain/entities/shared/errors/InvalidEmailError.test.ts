@@ -1,4 +1,4 @@
-import { InvalidEmailError } from "../../../../../../src/domain/entities/user/errors";
+import { InvalidEmailError } from "@domain/entities/user/errors";
 
 describe("Unit Tests of InvaldEmailError", () => {
     it("Should be able to create a new instance of Error", () => {

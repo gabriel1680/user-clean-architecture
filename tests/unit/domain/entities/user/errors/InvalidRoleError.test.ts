@@ -1,5 +1,4 @@
-import { InvalidRoleError } from "../../../../../../src/domain/entities/user/errors";
-
+import { InvalidRoleError } from "@domain/entities/user/errors";
 
 describe("Unit Tests of InvaldRoleError", () => {
     it("Should be able to create a new instance of Error", () => {
@@ -8,7 +7,9 @@ describe("Unit Tests of InvaldRoleError", () => {
     });
 
     it("Should be able to throw", () => {
-        const throwError = () => { throw new InvalidRoleError() };
+        const throwError = () => {
+            throw new InvalidRoleError();
+        };
         return expect(throwError).toThrowError();
     });
 

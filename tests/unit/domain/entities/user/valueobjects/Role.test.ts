@@ -1,10 +1,10 @@
-import { InvalidRoleError } from "../../../../../../src/domain/entities/user/errors";
-import { Role } from "../../../../../../src/domain/entities/user/valueobjects"
+import { InvalidRoleError } from "@domain/entities/user/errors";
+import { Role } from "@domain/entities/user/valueobjects";
 
 describe("Unit Tests of Role Value Object", () => {
     it("Should be able to create an instance by passing all correct valid args", () => {
         const roles = ["admin", "boss", "intern", "employee"];
-        roles.forEach(roleItem => {
+        roles.forEach((roleItem) => {
             const role = new Role(roleItem);
             return expect(role.value).toBe(roleItem);
         });

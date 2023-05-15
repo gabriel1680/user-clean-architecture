@@ -11,7 +11,7 @@ const { compilerOptions } = require("./tsconfig");
 
 module.exports = {
     moduleNameMapper: pathsToModuleNameMapper(compilerOptions.paths, {
-        prefix: "<rootDir>",
+        prefix: "<rootDir>/src",
     }),
 
     // All imported modules in your tests should be mocked automatically
