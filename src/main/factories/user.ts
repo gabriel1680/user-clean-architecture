@@ -17,7 +17,7 @@ import JWT from "@infra/services/JWT";
 import { jwt } from "@main/config/configs";
 import { FindController } from "@adapters/presentation/controllers/interfaces/FindController";
 import FindUserById from "@application/usecases/user/Find/FindUserById";
-import ListUsers from "@application/usecases/user/Find/ListUsers";
+import ListUsers from "@application/usecases/user/List/ListUsers";
 import DeleteUser from "@application/usecases/user/Delete/DeleteUser";
 import ConfirmRegisterEmail from "@application/usecases/user/RegisterEmailConfirmation/ConfirmRegisterEmail";
 import { UpdateUser } from "@application/usecases/user/Update";

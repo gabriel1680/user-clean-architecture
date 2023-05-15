@@ -1,21 +1,19 @@
-import { ApplicationError } from "@application/errors";
+import { ApplicationError, InvalidParametersError } from "@application/errors";
+import UserApplicationService from "@application/usecases/user/shared/UserApplicationService";
 import DomainError from "@domain/model/shared/DomainError";
-import UserNotFound from "@application/usecases/user/Find/UserNotFound";
-import { DeleteRepository } from "@application/interfaces/DefaultRepositories";
-import { InvalidParametersError } from "@application/errors";
-import User from "@domain/model/user/User";
+import UserRemover from "./UserRemover";
 
-export default class DeleteUser {
-    constructor(private readonly repository: DeleteRepository<User>) {}
+export default class DeleteUser
+    extends UserApplicationService
+    implements UserRemover
+{
+    public async execute(email: string): Promise<Output> {
+        if (!email) return new InvalidParametersError();
 
-    public async execute(
-        id: string
-    ): Promise<ApplicationError | DomainError | void> {
-        if (!id) return new InvalidParametersError();
+        const user = await this.findUserOrFail(email);
 
-        const user = await this.repository.findById(id);
-        if (!user) return new UserNotFound();
-
-        await this.repository.doDelete(user);
+        await this.userRepository.doDelete(user);
     }
 }
+
+type Output = ApplicationError | DomainError | void;

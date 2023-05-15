@@ -1,4 +1,4 @@
-import UserNotFound from "@application/usecases/user/Find/UserNotFound";
+import UserNotFound from "@application/usecases/user/shared/errors/UserNotFound";
 import { UserViewDTO } from "@application/usecases/user/shared/interfaces";
 import TokenManager from "@application/services/TokenManager";
 import { InvalidForgotLink } from "@application/usecases/user/ForgotPassword/Errors";

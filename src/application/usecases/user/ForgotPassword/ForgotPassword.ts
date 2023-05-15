@@ -1,5 +1,5 @@
 import Email from "@domain/model/user/Email";
-import UserNotFound from "@application/usecases/user/Find/UserNotFound";
+import UserNotFound from "@application/usecases/user/shared/errors/UserNotFound";
 import ForgotTokenRepository from "@application/usecases/user/ForgotPassword/interfaces/ForgotTokenRepository";
 import TokenManager from "@application/services/TokenManager";
 import MailService from "@application/services/MailService";

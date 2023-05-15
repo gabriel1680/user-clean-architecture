@@ -7,7 +7,7 @@ import { ApplicationError } from "@application/errors";
 import DomainError from "@domain/model/shared/DomainError";
 import TokenManager from "@application/services/TokenManager";
 import { IRecoveryAccountFromForgotToken } from "@application/usecases/user/ForgotPassword/interfaces";
-import UserNotFound from "@application/usecases/user/Find/UserNotFound";
+import UserNotFound from "@application/usecases/user/shared/errors/UserNotFound";
 import User from "@domain/model/user/User";
 
 export default class RecoveryAccountFromForgotToken
