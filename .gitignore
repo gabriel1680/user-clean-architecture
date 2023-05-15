@@ -6,7 +6,6 @@ tmp/
 !git.env
 !.test.env
 *.env
-package-lock.json
 !errorMessages.json
 *.todo
 *.icloud
