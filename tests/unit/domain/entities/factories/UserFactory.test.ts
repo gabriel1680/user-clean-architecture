@@ -13,6 +13,7 @@ describe("Unit Tests of UserFactory", () => {
         });
         return expect(user).toBeInstanceOf(User);
     });
+
     it("Should be able to create a user instance", () => {
         const userOrError = UserFactory.create({
             id: "",
