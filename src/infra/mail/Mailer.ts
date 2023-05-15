@@ -2,9 +2,9 @@ import { createTransport } from "nodemailer";
 import { Attachment, Envelope } from "nodemailer/lib/mailer";
 
 import { mail as mailConfig } from "@main/config/configs";
-import User from "@domain/entities/user/User";
-import { UserFactory } from "@domain/factories";
-import { Email } from "@domain/entities/user/valueobjects";
+import User from "@domain/model/user/User";
+import UserFactory from "@domain/model/user/UserFactory";
+import Email from "@domain/model/user/Email";
 import MailService from "@application/services/MailService";
 
 interface MailMessage {
@@ -39,7 +39,7 @@ export class Mailer implements MailService {
         message: MailMessage
     ): Promise<void> {
         await this._nodeMailerTransporter.sendMail({
-            from: `"${this._from.fullName}" <${this._from.emailAddress}>`,
+            from: `"${this._from.name.fullName}" <${this._from.email.address}>`,
             to: this.buildAddresseesString(addressees),
             subject: message.subject,
             html: message.body,

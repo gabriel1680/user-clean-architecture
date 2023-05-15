@@ -1,5 +1,5 @@
-import User from "@domain/entities/user/User";
-import { DomainError } from "@domain/errors";
+import User from "./User";
+import DomainError from "../shared/DomainError";
 
 type CreateUserFactory = {
     id: string;
@@ -11,7 +11,7 @@ type CreateUserFactory = {
     confirmLink?: string;
 };
 
-export class UserFactory {
+export default class UserFactory {
     public static create({
         id,
         firstName,

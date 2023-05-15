@@ -1,4 +1,4 @@
-import { InvalidRoleError } from "@domain/entities/user/errors";
+import { InvalidRoleError } from "@domain/model/user/Errors";
 
 describe("Unit Tests of InvaldRoleError", () => {
     it("Should be able to create a new instance of Error", () => {

@@ -1,14 +1,14 @@
 import { InvalidParametersError } from "@application/errors";
-import { Password } from "@domain/entities/user/valueobjects";
-import { HashPasswordService } from "@domain/services";
+import Password from "@domain/model/user/Password";
+import { HashPasswordService } from "@domain/model/user/service";
 import ForgotTokenRepository from "@application/usecases/user/ForgotPassword/interfaces/ForgotTokenRepository";
 import { InvalidForgotToken } from "@application/usecases/user/ForgotPassword/Errors";
 import { ApplicationError } from "@application/errors";
-import { DomainError } from "@domain/errors";
+import DomainError from "@domain/model/shared/DomainError";
 import TokenManager from "@application/services/TokenManager";
 import { IRecoveryAccountFromForgotToken } from "@application/usecases/user/ForgotPassword/interfaces";
 import UserNotFound from "@application/usecases/user/Find/UserNotFound";
-import User from "@domain/entities/user/User";
+import User from "@domain/model/user/User";
 
 export default class RecoveryAccountFromForgotToken
     implements IRecoveryAccountFromForgotToken

@@ -1,7 +1,7 @@
 import { ApplicationError } from "@application/errors";
 import CreatedUserResponse from "@application/usecases/user/Create/interfaces/CreatedUserResponse";
 import UserData from "@application/usecases/user/Create/interfaces/UserData";
-import { DomainError } from "@domain/errors";
+import DomainError from "@domain/model/shared/DomainError";
 import { CreateUserController } from "@adapters/presentation/controllers/user";
 import UserCreator from "@application/usecases/user/Create/interfaces/UserCreator.interface";
 import WelcomeMailSender from "@application/usecases/user/SendWelcomeMail/WelcomeMailSender.interface";

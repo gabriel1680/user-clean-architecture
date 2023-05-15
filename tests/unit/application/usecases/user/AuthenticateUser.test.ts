@@ -1,6 +1,6 @@
 import AuthenticateUser from "@application/usecases/user/Authenticate/AuthenticateUser";
 // @ts-ignore
-import User from "@domain/entities/user/User";
+import User from "@domain/model/user/User";
 import TokenManager from "@application/services/TokenManager";
 import { InvalidEmailOrPasswordError } from "@application/usecases/user/Authenticate/Errors";
 import { AuthHashService } from "@application/usecases/user/Authenticate/Interfaces";

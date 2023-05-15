@@ -5,7 +5,7 @@ import { InvalidForgotLink } from "@application/usecases/user/ForgotPassword/Err
 import { AuthenticateUserRepository } from "@application/usecases/user/Authenticate/Interfaces";
 import { ApplicationError } from "@application/errors";
 import UserToView from "@application/usecases/user/shared/helpers/UserToView";
-import User from "@domain/entities/user/User";
+import User from "@domain/model/user/User";
 
 export default class ConfirmForgotToken {
     constructor(

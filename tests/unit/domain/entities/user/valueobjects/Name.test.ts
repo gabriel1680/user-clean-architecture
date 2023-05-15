@@ -1,5 +1,5 @@
-import { InvalidNameError } from "@domain/entities/user/errors";
-import { Name } from "@domain/entities/user/valueobjects";
+import { InvalidNameError } from "@domain/model/user/Errors";
+import { Name } from "@domain/model/user";
 
 describe("Unit Tests of Name Value Object", () => {
     it("Should be able to create an instance", () => {

@@ -1,12 +1,12 @@
 import { UserViewDTO } from "@application/usecases/user/shared/interfaces";
 import { ApplicationError } from "@application/errors";
-import { DomainError } from "@domain/errors";
+import DomainError from "@domain/model/shared/DomainError";
 import UserNotFound from "@application/usecases/user/Find/UserNotFound";
 import UserToView from "@application/usecases/user/shared/helpers/UserToView";
 import { UpdateRepository } from "@application/interfaces/DefaultRepositories";
 import { InvalidParametersError } from "@application/errors";
 import UserUpdater from "@application/usecases/user/Update/UserUpdater";
-import User from "@domain/entities/user/User";
+import User from "@domain/model/user/User";
 
 export type UpdateUserPayload = {
     firstName: string;

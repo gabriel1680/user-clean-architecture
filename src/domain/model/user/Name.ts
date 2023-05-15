@@ -1,4 +1,4 @@
-import { InvalidNameError } from "../errors";
+import { InvalidNameError } from "./Errors";
 
 export default class Name {
     constructor(

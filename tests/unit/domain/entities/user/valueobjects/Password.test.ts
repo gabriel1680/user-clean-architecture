@@ -1,5 +1,5 @@
-import { InvalidPasswordError } from "@domain/entities/user/errors";
-import { Password } from "@domain/entities/user/valueobjects";
+import { InvalidPasswordError } from "@domain/model/user/Errors";
+import Password from "@domain/model/user/Password";
 
 describe("Unit Tests of Password Value Object", () => {
     it("Should be able to create an instance", () => {

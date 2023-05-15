@@ -1,4 +1,4 @@
-import { Email } from "@domain/entities/user/valueobjects";
+import Email from "@domain/model/user/Email";
 import UserNotFound from "@application/usecases/user/Find/UserNotFound";
 import ForgotTokenRepository from "@application/usecases/user/ForgotPassword/interfaces/ForgotTokenRepository";
 import TokenManager from "@application/services/TokenManager";
@@ -8,7 +8,7 @@ import { app } from "@main/config/configs";
 import { ApplicationError } from "@application/errors";
 import { capitalizeName } from "../shared/helpers/capitalizeName";
 import { IForgotPassword } from "@application/usecases/user/ForgotPassword/interfaces";
-import User from "@domain/entities/user/User";
+import User from "@domain/model/user/User";
 
 export default class ForgotPassword implements IForgotPassword {
     constructor(

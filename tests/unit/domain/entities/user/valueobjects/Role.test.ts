@@ -1,5 +1,5 @@
-import { InvalidRoleError } from "@domain/entities/user/errors";
-import { Role } from "@domain/entities/user/valueobjects";
+import { InvalidRoleError } from "@domain/model/user/Errors";
+import { Role } from "@domain/model/user";
 
 describe("Unit Tests of Role Value Object", () => {
     it("Should be able to create an instance by passing all correct valid args", () => {

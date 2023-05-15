@@ -4,7 +4,7 @@ import {
     UserTokenAuthenticator,
 } from "@application/usecases/user/Authenticate/Interfaces";
 import { UserViewDTO } from "@application/usecases/user/shared/interfaces";
-import { DomainError } from "@domain/errors";
+import DomainError from "@domain/model/shared/DomainError";
 import { ApplicationError } from "@application/errors";
 import { InvalidEmailOrPasswordError } from "@application/usecases/user/Authenticate/Errors";
 

@@ -1,5 +1,4 @@
-import { Password, Name, Role } from "./valueobjects";
-import Email from "./valueobjects/Email";
+import { Password, Name, Role, Email } from ".";
 
 export default class User {
     private _email: Email;

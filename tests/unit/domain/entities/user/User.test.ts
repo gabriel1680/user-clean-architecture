@@ -1,10 +1,5 @@
-import User from "@domain/entities/user/User";
-import {
-    Email,
-    Name,
-    Password,
-    Role,
-} from "@domain/entities/user/valueobjects";
+import User from "@domain/model/user/User";
+import { Email, Name, Password, Role } from "@domain/model/user";
 
 it("should be able to retrieve user object", () => {
     const now = new Date();

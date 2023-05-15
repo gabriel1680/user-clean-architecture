@@ -1,6 +1,6 @@
 import UserRepository from "@application/usecases/user/shared/interfaces/UserRepository";
 import { AuthenticateUserRepository } from "@application/usecases/user/Authenticate/Interfaces";
-import User from "@domain/entities/user/User";
+import User from "@domain/model/user/User";
 
 export default class UserRepositoryInMemory
     implements UserRepository, AuthenticateUserRepository

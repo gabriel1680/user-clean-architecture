@@ -8,8 +8,8 @@ import {
 } from "@application/usecases/user/Authenticate/Interfaces";
 import UserToView from "@application/usecases/user/shared/helpers/UserToView";
 import { UserViewDTO } from "@application/usecases/user/shared/interfaces";
-import User from "@domain/entities/user/User";
-import { DomainError } from "@domain/errors";
+import User from "@domain/model/user/User";
+import DomainError from "@domain/model/shared/DomainError";
 
 export default class AuthenticateUser implements UserAuthenticator {
     constructor(

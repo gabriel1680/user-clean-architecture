@@ -1,4 +1,4 @@
-import { InvalidNameError } from "@domain/entities/user/errors";
+import { InvalidNameError } from "@domain/model/user/Errors";
 
 describe("Unit Tests of InvaldNameError", () => {
     it("Should be able to create a new instance of Error", () => {

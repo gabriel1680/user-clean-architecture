@@ -1,7 +1,7 @@
 import MailService from "@application/services/MailService";
 import { forgotTemplateFactory } from "@infra/mail/factories";
 import { app } from "@main/config/configs";
-import { Email } from "@domain/entities/user/valueobjects";
+import Email from "@domain/model/user/Email";
 import { capitalizeName } from "../shared/helpers/capitalizeName";
 
 export interface ForgotMail {

@@ -1,4 +1,4 @@
-import { HashPasswordService } from "@domain/services";
+import { HashPasswordService } from "@domain/model/user/service";
 import { compareSync, hashSync } from "bcryptjs";
 
 export default class Hasher implements HashPasswordService {

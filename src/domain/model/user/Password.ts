@@ -1,4 +1,4 @@
-import { InvalidPasswordError } from "../errors";
+import { InvalidPasswordError } from "./Errors";
 
 export default class Password {
     public value: string;

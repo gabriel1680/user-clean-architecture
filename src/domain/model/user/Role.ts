@@ -1,4 +1,4 @@
-import { InvalidRoleError } from "../errors";
+import { InvalidRoleError } from "./Errors";
 
 enum Roles {
     admin = "admin",

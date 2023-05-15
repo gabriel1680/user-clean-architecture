@@ -1,4 +1,4 @@
-import { InvalidPasswordError } from "@domain/entities/user/errors";
+import { InvalidPasswordError } from "@domain/model/user/Errors";
 
 describe("Unit Tests of InvaldPasswordError", () => {
     it("Should be able to create a new instance of Error", () => {

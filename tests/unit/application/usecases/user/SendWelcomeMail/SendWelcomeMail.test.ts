@@ -1,6 +1,6 @@
 import SendWelcomeMail from "@application/usecases/user/SendWelcomeMail/SendWelcomeMail";
 import MailService from "@application/services/MailService";
-import Email from "@domain/entities/user/valueobjects/Email";
+import Email from "@domain/model/user/Email";
 // @ts-ignore
 import htmlMessage from "./buildedEmailData";
 

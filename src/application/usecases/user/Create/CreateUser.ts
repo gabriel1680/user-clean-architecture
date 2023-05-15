@@ -1,11 +1,11 @@
-import { DomainError } from "@domain/errors";
+import DomainError from "@domain/model/shared/DomainError";
 import { ApplicationError } from "@application/errors";
-import { UserFactory } from "@domain/factories";
+import UserFactory from "@domain/model/user/UserFactory";
 import {
     UniqueIdGeneratorService,
     HashPasswordService,
-} from "@domain/services";
-import User from "@domain/entities/user/User";
+} from "@domain/model/user/service";
+import User from "@domain/model/user/User";
 import { UserExistsError } from "@application/usecases/user/shared/errors";
 import { CreateRepository } from "../../../interfaces/DefaultRepositories";
 import UserData from "@application/usecases/user/Create/interfaces/UserData";
