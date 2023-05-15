@@ -1,43 +1,56 @@
-import { UserAuthenticator, AuthenticateUserRepository }
-	from "@application/usecases/user/Authenticate/Interfaces";
-import { UserViewDTO } from "@application/usecases/user/shared/interfaces";
+import { ApplicationError, InvalidParametersError } from "@application/errors";
 import TokenManager from "@application/services/TokenManager";
-import { DomainError } from "@domain/errors"
-import { ApplicationError } from "@application/errors";
-import { Email } from "@domain/entities/user/valueobjects";
 import { InvalidEmailOrPasswordError } from "@application/usecases/user/Authenticate/Errors";
-import { AuthHashService } from "@application/usecases/user/Authenticate/Interfaces";
+import {
+    AuthHashService,
+    AuthenticateUserRepository,
+    UserAuthenticator,
+} from "@application/usecases/user/Authenticate/Interfaces";
 import UserToView from "@application/usecases/user/shared/helpers/UserToView";
-import { InvalidParametersError } from "@application/errors";
-
+import { UserViewDTO } from "@application/usecases/user/shared/interfaces";
+import User from "@domain/entities/user/User";
+import { DomainError } from "@domain/errors";
 
 export default class AuthenticateUser implements UserAuthenticator {
-	constructor(
-		private readonly userRepository: AuthenticateUserRepository,
-		private readonly tokenManager: TokenManager,
-		private readonly hashService: AuthHashService
-	) { }
-	public async execute(
-		email: string,
-		password: string
-	): Promise<DomainError | ApplicationError | { user: UserViewDTO; token: string }> {
-		if (!email || !password) return new InvalidParametersError();
+    constructor(
+        private readonly userRepository: AuthenticateUserRepository,
+        private readonly tokenManager: TokenManager,
+        private readonly hashService: AuthHashService
+    ) {}
+    public async execute(
+        email: string,
+        password: string
+    ): Promise<
+        DomainError | ApplicationError | { user: UserViewDTO; token: string }
+    > {
+        if (!email || !password) return new InvalidParametersError();
 
-		try { new Email(email) } catch (e) { return e }
+        const user = await this.userRepository.findByEmail(email);
+        if (!user) return new InvalidEmailOrPasswordError();
 
-		const user = await this.userRepository.findByEmail(email);
-		if (!user) return new InvalidEmailOrPasswordError();
+        if (!this.arePasswordEquals(password, user.password.value))
+            return new InvalidEmailOrPasswordError();
 
-		const arePasswordEquals = this.hashService.compare(password, user.password);
-		if (!arePasswordEquals) return new InvalidEmailOrPasswordError();
+        return {
+            user: new UserToView(user),
+            token: this.generateToken(user),
+        };
+    }
 
-		const expiresIn = new Date();
-		expiresIn.setTime(expiresIn.getTime() + 12 * 60 * 60 * 1000); // 12 horas
+    private arePasswordEquals(password: string, userPassword: string) {
+        return this.hashService.compare(password, userPassword);
+    }
 
-		const token = this.tokenManager.generateToken({ id: user.id }, expiresIn.getTime());
-		return {
-			user: new UserToView(user),
-			token
-		}
-	}
+    private generateToken(user: User) {
+        return this.tokenManager.generateToken(
+            { id: user.id },
+            this.getExpirationDateString()
+        );
+    }
+
+    private getExpirationDateString() {
+        const expiresIn = new Date();
+        expiresIn.setTime(expiresIn.getTime() + 12 * 60 * 60 * 1000); // 12 horas
+        return expiresIn.getTime();
+    }
 }

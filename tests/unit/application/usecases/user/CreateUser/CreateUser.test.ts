@@ -58,7 +58,6 @@ describe("Unit Tests of Create UseCase", () => {
             password: "12345",
             role: "admin",
         });
-
         return expect(result).toBeInstanceOf(UserExistsError);
     });
 

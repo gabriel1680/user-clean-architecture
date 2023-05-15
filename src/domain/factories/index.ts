@@ -1,8 +1,5 @@
-import { DomainError } from "@domain/errors";
-import Email from "@domain/entities/user/valueobjects/Email";
 import User from "@domain/entities/user/User";
-import { Name, Password, Role } from "@domain/entities/user/valueobjects";
-
+import { DomainError } from "@domain/errors";
 
 type CreateUserFactory = {
     id: string;
@@ -12,39 +9,27 @@ type CreateUserFactory = {
     password: string;
     role: string;
     confirmLink?: string;
-    forgotToken?: string;
-    createdAt?: Date;
-    updatedAt?: Date;
-}
+};
 
-export class UserFactory
-{
-    public static create(
-        {
-            id,
-            firstName,
-            lastName,
-            email,
-            password,
-            role,
-            confirmLink = null,
-            forgotToken = null,
-            createdAt = new Date(),
-            updatedAt = new Date()
-        }: CreateUserFactory
-    ): User | DomainError
-    {
+export class UserFactory {
+    public static create({
+        id,
+        firstName,
+        lastName,
+        email,
+        password,
+        role,
+        confirmLink = null,
+    }: CreateUserFactory): User | DomainError {
         try {
             return new User(
                 id,
-                new Email(email),
-                new Password(password),
-                new Name(firstName, lastName),
-                new Role(role),
-                confirmLink,
-                forgotToken,
-                createdAt,
-                updatedAt
+                firstName,
+                lastName,
+                email,
+                password,
+                role,
+                confirmLink
             );
         } catch (error) {
             return error;

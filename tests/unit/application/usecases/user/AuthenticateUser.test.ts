@@ -1,12 +1,6 @@
 import AuthenticateUser from "@application/usecases/user/Authenticate/AuthenticateUser";
 // @ts-ignore
 import User from "@domain/entities/user/User";
-import {
-    Email,
-    Name,
-    Password,
-    Role,
-} from "@domain/entities/user/valueobjects";
 import TokenManager from "@application/services/TokenManager";
 import { InvalidEmailOrPasswordError } from "@application/usecases/user/Authenticate/Errors";
 import { AuthHashService } from "@application/usecases/user/Authenticate/Interfaces";
@@ -35,12 +29,14 @@ class FakeHash implements AuthHashService {
 }
 
 describe("Unit Tests Os Authenticate UserMongo", () => {
-    const user: User = new User(
+    const user = new User(
         "as7a8sdas8da",
-        new Email("gabriel.lopes@hotmail.com"),
-        new Password("12345678"),
-        new Name("gabriel", "Lopes"),
-        new Role("admin")
+        "gabriel",
+        "lopes",
+        "gabriel.lopes@hotmail.com",
+        "12345678",
+        "admin",
+        null
     );
 
     const userViewData: UserViewDTO = new UserToView(user);
@@ -68,7 +64,7 @@ describe("Unit Tests Os Authenticate UserMongo", () => {
         expect(spyOnRepo).toBeCalledWith(email);
         expect(spyOnToken).toBeCalledTimes(1);
         expect(spyOnHash).toBeCalledTimes(1);
-        return expect(spyOnHash).toBeCalledWith(password, user.password);
+        return expect(spyOnHash).toBeCalledWith(password, user.password.value);
     });
 
     it("should be able to authenticate correctly user", async () => {
