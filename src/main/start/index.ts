@@ -9,9 +9,9 @@ dotenv.config();
 
 Connection.tryToConnect()
     .then((connection) => {
-        //@ts-ignore
         console.log(
             colors.FgWhite,
+            // @ts-expect-error - not declared prop `port` in lib type file
             `Database ${colors.FgCyan}"${connection.options.database}"${colors.FgWhite} is connected on port ${colors.FgCyan}${connection.options.port}`
         );
     })
