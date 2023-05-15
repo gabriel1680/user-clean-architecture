@@ -44,14 +44,9 @@ const config = {
             address: process.env.DEFAULT_MAIL_SENDER_ADDRESS,
         },
     },
-    imageStorage: {
-        apiKey: process.env.IMG_API_KEY,
-        url: process.env.IMG_UPLOAD_URL,
-    },
 };
 
 export const { app } = config;
 export const { db } = config;
 export const { jwt } = config;
 export const { mail } = config;
-export const { imageStorage } = config;
