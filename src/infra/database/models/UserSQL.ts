@@ -1,5 +1,10 @@
-import { Entity, Column, CreateDateColumn, UpdateDateColumn, PrimaryColumn, OneToMany } from "typeorm";
-import Appraisal from "./Appraisal";
+import {
+    Entity,
+    Column,
+    CreateDateColumn,
+    UpdateDateColumn,
+    PrimaryColumn,
+} from "typeorm";
 
 @Entity("users")
 export default class UserSQL {
@@ -32,10 +37,4 @@ export default class UserSQL {
 
     @UpdateDateColumn({ nullable: true })
     public updated_at: Date | null;
-
-    /**
-     * Relations
-     */
-    @OneToMany(() => Appraisal, appraisal => appraisal.creator)
-    public appraisals: Appraisal;
 }

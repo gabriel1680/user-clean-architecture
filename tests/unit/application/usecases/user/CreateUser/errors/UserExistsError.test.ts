@@ -1,4 +1,4 @@
-import UserExistsError from "../../../../../../../src/application/usecases/user/shared/errors/UserExistsError"
+import { UserExistsError } from "@application/usecases/user/shared/errors";
 
 describe("Unit Tests of UserExistsError", () => {
     it("Should be able to create a new instance of Error", () => {
@@ -7,7 +7,9 @@ describe("Unit Tests of UserExistsError", () => {
     });
 
     it("Should be able to throw", () => {
-        const throwError = () => { throw new UserExistsError() };
+        const throwError = () => {
+            throw new UserExistsError();
+        };
         return expect(throwError).toThrowError();
     });
 

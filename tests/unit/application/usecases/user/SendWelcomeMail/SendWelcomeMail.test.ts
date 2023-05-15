@@ -1,11 +1,14 @@
 import SendWelcomeMail from "../../../../../../src/application/usecases/user/SendWelcomeMail/SendWelcomeMail";
 import MailService from "../../../../../../src/application/services/MailService";
-import Email from "../../../../../../src/domain/entities/shared/valueobjects/Email";
+import Email from "../../../../../../src/domain/entities/user/valueobjects/Email";
+// @ts-ignore
 import htmlMessage from "./buildedEmailData";
 
-class FakeMailer implements MailService
-{
-    async send(addressees: Email[], message: { subject: string; body: string; attachments?: any[] }): Promise<void> {}
+class FakeMailer implements MailService {
+    async send(
+        addressees: Email[],
+        message: { subject: string; body: string; attachments?: any[] }
+    ): Promise<void> {}
 }
 
 describe("Unit Tests of SendWelcomeMail", () => {
@@ -18,8 +21,8 @@ describe("Unit Tests of SendWelcomeMail", () => {
             confirmLink: "/users/confirmation/123h12i3h213u12iu3",
             user: {
                 firstName: "gabriel",
-                email: "gabriel.lopes@gmail.com"
-            }
+                email: "gabriel.lopes@gmail.com",
+            },
         });
         expect(spy).toHaveBeenCalledTimes(1);
         return expect(spy).toHaveBeenCalledWith(

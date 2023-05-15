@@ -1,4 +1,4 @@
-import InvalidRoleError from "../errors/InvalidRoleError";
+import { InvalidRoleError } from "../errors";
 
 enum Roles {
     admin = "admin",
@@ -7,8 +7,7 @@ enum Roles {
     employee = "employee",
 }
 
-export default class Role
-{
+export default class Role {
     public readonly value: string;
 
     constructor(role: string) {

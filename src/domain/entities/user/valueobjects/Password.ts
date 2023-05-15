@@ -1,13 +1,11 @@
-import InvalidPasswordError from "../errors/InvalidPasswordError";
+import { InvalidPasswordError } from "../errors";
 
-
-export default class Password
-{
+export default class Password {
     public value: string;
 
     private static minLength = 5;
 
-    constructor (password: string) {
+    constructor(password: string) {
         if (!this.isValid(password)) throw new InvalidPasswordError();
         this.value = password;
     }

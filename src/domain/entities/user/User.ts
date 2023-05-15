@@ -1,11 +1,10 @@
 import { Password, Name, Role } from "./valueobjects";
 import Email from "./valueobjects/Email";
 
-
 export default class User {
     constructor(
         public readonly id: string,
-        private email: Email,
+        private _email: Email,
         private passwd: Password,
         private name: Name,
         private roleType: Role,
@@ -14,6 +13,10 @@ export default class User {
         public readonly createdAt: Date = new Date(),
         public updatedAt: Date = new Date()
     ) {}
+
+    public get email(): Email {
+        return this._email;
+    }
 
     public get firstName(): string {
         return this.name.firstName;
@@ -48,15 +51,21 @@ export default class User {
     }
 
     public get emailAddress(): string {
-        return this.email.address;
+        return this._email.address;
     }
 
     public isAllowedToCreateAnotherUser(): boolean {
-        return this.roleType.value === "admin" || this.roleType.value === "boss";
+        return (
+            this.roleType.value === "admin" || this.roleType.value === "boss"
+        );
     }
 
     public isAllowedToFinalizeAppraisal(): boolean {
-        return this.roleType.value === "admin" || this.roleType.value === "boss" || this.roleType.value === "intern";
+        return (
+            this.roleType.value === "admin" ||
+            this.roleType.value === "boss" ||
+            this.roleType.value === "intern"
+        );
     }
 
     public isAccountConfirmed(): boolean {

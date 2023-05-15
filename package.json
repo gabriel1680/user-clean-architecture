@@ -1,89 +1,89 @@
 {
-  "name": "user-clean-architecture",
-  "version": "1.0.0",
-  "main": "build/main/start/index.js",
-  "author": "Gabriel Pedersoli Lopes",
-  "description": "A simple user crud application built with TDD and Clean Architecture",
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/gabriel1680/user-clean-architecture.git"
-  },
-  "bugs": {
-    "url": "https://github.com/gabriel1680/user-clean-architecture/issues"
-  },
-  "license": "MIT",
-  "private": true,
-  "husky": {
-    "hooks": {
-      "commit-msg": "commitlint -E HUSKY_GIT_PARAMS"
+    "name": "user-clean-architecture",
+    "version": "1.0.0",
+    "main": "build/main/start/index.js",
+    "author": "Gabriel Pedersoli Lopes",
+    "description": "A simple user crud application built with TDD and Clean Architecture",
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/gabriel1680/user-clean-architecture.git"
+    },
+    "bugs": {
+        "url": "https://github.com/gabriel1680/user-clean-architecture/issues"
+    },
+    "license": "MIT",
+    "private": true,
+    "husky": {
+        "hooks": {
+            "commit-msg": "commitlint -E HUSKY_GIT_PARAMS"
+        }
+    },
+    "testFileExtensions": [
+        "es6",
+        "js"
+    ],
+    "moduleFileExtensions": [
+        "js",
+        "json",
+        "es6"
+    ],
+    "scripts": {
+        "dev": "ENVIRONMENT=development tsnd -r tsconfig-paths/register src/main/start --ignore tests",
+        "stage": "ENVIRONMENT=stage tsnd -r tsconfig-paths/register src/logic/start --ignore tests",
+        "build": "npm run clean && npx tsc --project ./tsconfig.build.json && tscpaths -p tsconfig.build.json -s ./src -o ./build && npm run copy",
+        "clean": "rm -rf ./build",
+        "copy": "cp -r ./src/infra/mail/views ./build/infra/mail/views && cp -r ./src/infra/storage ./build/infra/storage",
+        "start": "ENVIRONMENT=production node build/main/start/index.js",
+        "typeorm": "tsnd ./node_modules/typeorm/cli.js",
+        "husky": "husky install",
+        "test": "jest --coverage --detectOpenHandles",
+        "test:integration": "jest ./tests/integration --coverage --detectOpenHandles",
+        "test:unit": "jest ./tests/unit --coverage --detectOpenHandles"
+    },
+    "devDependencies": {
+        "@commitlint/cli": "^13.1.0",
+        "@commitlint/config-conventional": "^13.1.0",
+        "@types/aws-sdk": "^2.7.0",
+        "@types/bcryptjs": "^2.4.2",
+        "@types/compression": "^1.7.1",
+        "@types/cors": "^2.8.10",
+        "@types/ejs": "^3.0.7",
+        "@types/express": "^4.17.12",
+        "@types/helmet": "^4.0.0",
+        "@types/jest": "^27.0.3",
+        "@types/jsonwebtoken": "^8.5.2",
+        "@types/multer": "^1.4.7",
+        "@types/multer-s3": "^2.7.10",
+        "@types/node": "^8.0.29",
+        "@types/nodemailer": "^6.4.2",
+        "@types/request": "^2.48.7",
+        "@types/supertest": "^2.0.11",
+        "@types/uuid": "^8.3.1",
+        "husky": "^7.0.0",
+        "jest": "^27.0.6",
+        "sqlite3": "^5.0.2",
+        "supertest": "^6.1.6",
+        "ts-jest": "^27.0.3",
+        "ts-node-dev": "^1.1.8",
+        "tsconfig-paths": "^3.12.0"
+    },
+    "dependencies": {
+        "bcryptjs": "^2.4.3",
+        "compression": "^1.7.4",
+        "cors": "^2.8.5",
+        "crypto": "^1.0.1",
+        "dotenv": "^10.0.0",
+        "ejs": "^3.1.6",
+        "express": "^4.17.1",
+        "express-async-errors": "^3.1.1",
+        "helmet": "^4.6.0",
+        "jsonwebtoken": "^8.5.1",
+        "nodemailer": "^6.6.2",
+        "pg": "^8.6.0",
+        "reflect-metadata": "^0.1.10",
+        "tscpaths": "^0.0.9",
+        "typeorm": "0.2.34",
+        "typescript": "^4.5.4",
+        "uuid": "^8.3.2"
     }
-  },
-  "testFileExtensions": [
-    "es6",
-    "js"
-  ],
-  "moduleFileExtensions": [
-    "js",
-    "json",
-    "es6"
-  ],
-  "scripts": {
-    "dev": "ENVIRONMENT=development tsnd -r tsconfig-paths/register src/main/start --ignore tests",
-    "stage": "ENVIRONMENT=stage tsnd -r tsconfig-paths/register src/logic/start --ignore tests",
-    "build": "npm run clean && npx tsc --project ./tsconfig.json && tscpaths -p tsconfig.json -s ./src -o ./build && npm run copy",
-    "clean": "rm -rf ./build",
-    "copy": "cp -r ./src/infra/mail/views ./build/infra/mail/views && cp -r ./src/infra/storage ./build/infra/storage",
-    "start": "ENVIRONMENT=production node build/main/start/index.js",
-    "typeorm": "tsnd ./node_modules/typeorm/cli.js",
-    "husky": "husky install",
-    "test": "jest --coverage --detectOpenHandles",
-    "test:integration": "jest ./tests/integration --coverage --detectOpenHandles",
-    "test:unit": "jest ./tests/unit --coverage --detectOpenHandles"
-  },
-  "devDependencies": {
-    "@commitlint/cli": "^13.1.0",
-    "@commitlint/config-conventional": "^13.1.0",
-    "@types/aws-sdk": "^2.7.0",
-    "@types/bcryptjs": "^2.4.2",
-    "@types/compression": "^1.7.1",
-    "@types/cors": "^2.8.10",
-    "@types/ejs": "^3.0.7",
-    "@types/express": "^4.17.12",
-    "@types/helmet": "^4.0.0",
-    "@types/jest": "^27.0.3",
-    "@types/jsonwebtoken": "^8.5.2",
-    "@types/multer": "^1.4.7",
-    "@types/multer-s3": "^2.7.10",
-    "@types/node": "^8.0.29",
-    "@types/nodemailer": "^6.4.2",
-    "@types/request": "^2.48.7",
-    "@types/supertest": "^2.0.11",
-    "@types/uuid": "^8.3.1",
-    "husky": "^7.0.0",
-    "jest": "^27.0.6",
-    "sqlite3": "^5.0.2",
-    "supertest": "^6.1.6",
-    "ts-jest": "^27.0.3",
-    "ts-node-dev": "^1.1.8",
-    "tsconfig-paths": "^3.12.0"
-  },
-  "dependencies": {
-    "bcryptjs": "^2.4.3",
-    "compression": "^1.7.4",
-    "cors": "^2.8.5",
-    "crypto": "^1.0.1",
-    "dotenv": "^10.0.0",
-    "ejs": "^3.1.6",
-    "express": "^4.17.1",
-    "express-async-errors": "^3.1.1",
-    "helmet": "^4.6.0",
-    "jsonwebtoken": "^8.5.1",
-    "nodemailer": "^6.6.2",
-    "pg": "^8.6.0",
-    "reflect-metadata": "^0.1.10",
-    "tscpaths": "^0.0.9",
-    "typeorm": "0.2.34",
-    "typescript": "^4.5.4",
-    "uuid": "^8.3.2"
-  }
 }

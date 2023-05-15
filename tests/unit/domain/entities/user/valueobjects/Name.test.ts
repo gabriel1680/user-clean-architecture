@@ -1,5 +1,5 @@
-import { InvalidNameError } from "../../../../../../src/domain/entities/user/errors";
-import { Name } from "../../../../../../src/domain/entities/user/valueobjects"
+import { InvalidNameError } from "@domain/entities/user/errors";
+import { Name } from "@domain/entities/user/valueobjects";
 
 describe("Unit Tests of Name Value Object", () => {
     it("Should be able to create an instance", () => {
@@ -10,10 +10,16 @@ describe("Unit Tests of Name Value Object", () => {
     });
 
     it("Should not be able to create an instance by receiving empty first name", () => {
-        const invalidNameParameters = [{fName: "", lName: "Lopes"}, {fName: "Gabriel", lName: ""}];
+        const invalidNameParameters = [
+            { fName: "", lName: "Lopes" },
+            { fName: "Gabriel", lName: "" },
+        ];
         invalidNameParameters.forEach(({ fName, lName }) => {
-            const attemptToCreateNameWithoutFirstName = () => new Name(fName, lName);
-            expect(attemptToCreateNameWithoutFirstName).toThrow(InvalidNameError);
+            const attemptToCreateNameWithoutFirstName = () =>
+                new Name(fName, lName);
+            expect(attemptToCreateNameWithoutFirstName).toThrow(
+                InvalidNameError
+            );
         });
     });
 });

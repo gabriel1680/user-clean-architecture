@@ -1,5 +1,4 @@
-import InvalidEmailError from "../../../../../../src/domain/entities/shared/errors/InvalidEmailError";
-
+import { InvalidEmailError } from "../../../../../../src/domain/entities/user/errors";
 
 describe("Unit Tests of InvaldEmailError", () => {
     it("Should be able to create a new instance of Error", () => {
@@ -8,7 +7,9 @@ describe("Unit Tests of InvaldEmailError", () => {
     });
 
     it("Should be able to throw", () => {
-        const throwError = () => { throw new InvalidEmailError() };
+        const throwError = () => {
+            throw new InvalidEmailError();
+        };
         return expect(throwError).toThrowError();
     });
 

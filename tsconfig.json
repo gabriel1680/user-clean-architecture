@@ -5,14 +5,14 @@
          "ES6",
          "ES2018"
       ],
-      "rootDir": "./src",
-      "baseUrl": "src/",
+      "rootDir": ".",
+      "baseUrl": "/",
       "paths": {
-         "@domain/*": ["domain/*"],
-         "@infra/*": ["infra/*"],
-         "@main/*": ["main/*"],
-         "@adapters/*": ["adapters/*"],
-         "@application/*": ["application/*"]
+         "@domain/*": ["src/domain/*"],
+         "@infra/*": ["src/infra/*"],
+         "@main/*": ["src/main/*"],
+         "@adapters/*": ["src/adapters/*"],
+         "@application/*": ["src/application/*"]
       },
       "removeComments": true,
       "resolveJsonModule": true,
@@ -27,6 +27,5 @@
       "declaration": false,
       "isolatedModules": false,
       "skipLibCheck": true
-   }, 
-   "exclude": ["node_modules", "tests"]
+   }
 }

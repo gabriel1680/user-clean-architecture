@@ -1,9 +1,7 @@
-import InvalidEmailError from "../../../../../../src/domain/entities/shared/errors/InvalidEmailError";
-import Email from "../../../../../../src/domain/entities/shared/valueobjects/Email";
-
+import { InvalidEmailError } from "../../../../../../src/domain/entities/user/errors";
+import Email from "../../../../../../src/domain/entities/user/valueobjects/Email";
 
 describe("Unit Tests of Email Value Object", () => {
-
     const validEmail = "gabriel.lopes@gmail.com";
 
     it("Should be able to create an instance", () => {
@@ -20,6 +18,8 @@ describe("Unit Tests of Email Value Object", () => {
     it("Should not be able to instanceate by receiving an email with less than 5 characters", () => {
         const attemptToCreateInvalidEmail = () => new Email("abacate@cleber");
         expect(attemptToCreateInvalidEmail).toThrow(InvalidEmailError);
-        return expect(attemptToCreateInvalidEmail).toThrowError("Email inválido");
+        return expect(attemptToCreateInvalidEmail).toThrowError(
+            "Email inválido"
+        );
     });
 });

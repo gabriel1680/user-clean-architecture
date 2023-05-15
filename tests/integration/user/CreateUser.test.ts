@@ -1,9 +1,9 @@
 import request from "supertest";
 
-import app from "../../../src/main/config/app";
+import app from "@main/config/app";
 /* @ts-ignore */
 import connect from "../database/connection";
-import { UserViewDTO } from "../../../src/application/usecases/user/shared/interfaces";
+import { UserViewDTO } from "@application/usecases/user/shared/interfaces";
 // @ts-ignore
 import { invalidUserRequests } from "./CreateUserData";
 
@@ -14,7 +14,6 @@ beforeAll(async () => {
 });
 
 describe("Integration Tests Of UserMongo Creation", function () {
-
     jest.setTimeout(10000);
 
     it("should be able to create create user", async () => {
@@ -23,12 +22,14 @@ describe("Integration Tests Of UserMongo Creation", function () {
             lastName: "pereira",
             email: "cleber.teste@gmail.com",
             password: "12345678",
-            role: "admin"
+            role: "admin",
         };
 
-        const oRequest = requestWithApp.post("/users").set("Authorization", `bearer `);
+        const oRequest = requestWithApp
+            .post("/users")
+            .set("Authorization", `bearer `);
         const response = await oRequest.send(newUser);
-        
+
         const user: UserViewDTO = response.body;
         const statusCode: number = response.status;
 
@@ -37,21 +38,24 @@ describe("Integration Tests Of UserMongo Creation", function () {
     });
 
     it("should not be able to create user", async () => {
-
         invalidUserRequests.push({
             firstName: "cleber",
             lastName: "pereira",
             email: "cleber.teste@gmail.com", // Já está caadastrado 👆
             password: "12345678",
-            role: "admin"
+            role: "admin",
         });
 
-        const oRequest = requestWithApp.post("/users").set("Authorization", `bearer `);
+        const oRequest = requestWithApp
+            .post("/users")
+            .set("Authorization", `bearer `);
 
-        await Promise.all(invalidUserRequests.map(async invalidBodyRequest => {
-            const response = await oRequest.send(invalidBodyRequest);
-            const statusCode: number = response.status;
-            return expect(statusCode).toBe(400);
-        }));
+        await Promise.all(
+            invalidUserRequests.map(async (invalidBodyRequest) => {
+                const response = await oRequest.send(invalidBodyRequest);
+                const statusCode: number = response.status;
+                return expect(statusCode).toBe(400);
+            })
+        );
     });
 });

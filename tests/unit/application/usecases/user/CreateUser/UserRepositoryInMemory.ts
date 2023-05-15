@@ -1,33 +1,35 @@
-import UserDbDTO from "../../../../../../src/application/usecases/user/shared/interfaces/UserDbDTO";
-import UserRepository from "../../../../../../src/application/usecases/user/shared/interfaces/UserRepository";
-import { AuthenticateUserRepository }
-    from "../../../../../../src/application/usecases/user/Authenticate/Interfaces";
+import UserRepository from "@application/usecases/user/shared/interfaces/UserRepository";
+import { AuthenticateUserRepository } from "@application/usecases/user/Authenticate/Interfaces";
+import User from "@domain/entities/user/User";
 
-export default class UserRepositoryInMemory implements UserRepository, AuthenticateUserRepository
+export default class UserRepositoryInMemory
+    implements UserRepository, AuthenticateUserRepository
 {
-    private users: UserDbDTO[] = [];
+    private users: User[] = [];
 
     constructor() {}
-    
-    async persist(user: UserDbDTO): Promise<void>
-    {
+
+    async existsById(id: string): Promise<boolean> {
+        return Boolean(this.users.find((u) => u.id === id));
+    }
+
+    async persist(user: User): Promise<void> {
         this.users.push(user);
     }
 
-    async exists(email: string): Promise<boolean>
-    {
-        return !!this.users.find(user => user.email === email);
+    async exists(email: string): Promise<boolean> {
+        return !!this.users.find((user) => user.email.address === email);
     }
 
-    async findByEmail(email: string): Promise<UserDbDTO> {
-        return this.users.find(user => user.email === email);
+    async findByEmail(email: string): Promise<User> {
+        return this.users.find((user) => user.email.address === email);
     }
 
-    doDelete(model: UserDbDTO): Promise<void> {
+    doDelete(model: User): Promise<void> {
         return Promise.resolve(undefined);
     }
 
-    doUpdate(user: UserDbDTO): Promise<void> {
+    doUpdate(user: User): Promise<void> {
         return Promise.resolve(undefined);
     }
 
@@ -35,11 +37,11 @@ export default class UserRepositoryInMemory implements UserRepository, Authentic
         return Promise.resolve(false);
     }
 
-    findById(id: string | number): Promise<UserDbDTO> {
+    findById(id: string | number): Promise<User> {
         return Promise.resolve(undefined);
     }
 
-    list(): Promise<UserDbDTO[]> {
+    list(): Promise<User[]> {
         return Promise.resolve([]);
     }
 
